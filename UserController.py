@@ -8,21 +8,21 @@ class UserController:
         # return jsonify([i.getData() for i in User.query.all()])
 
     def create():
-        return "This is users create"
+        return render_template('users/create.html')
 
     def store():
-        User().create(request.json)
+        User().create(request.form)
         return jsonify({'Message':f'User has been created'})
 
 
     def show(id):
-        return jsonify(User.query.get(id))
+        return render_template('users/show.html',user =User.query.get(id))
 
     def edit(id):
-        return jsonify(User.query.get(id))
+        return render_template('users/edit.html',user =User.query.get(id))
 
     def update(id):
-        User.query.get(id).update(request.json)
+        User.query.get(id).update(request.form)
         return jsonify({'Message':f'User has been updated with id {id}'})
     
     def delete(id):

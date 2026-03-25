@@ -8,6 +8,7 @@
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Status</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -17,6 +18,14 @@
                 <td>{{user.name}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.status}}</td>
+                <td>
+                  <a class="btn btn-sm btn-primary" href="/users/{{user.id}}/edit">Edit</a>
+                   <a class="btn btn-sm btn-primary" href="/users/{{user.id}}">View</a>
+                  <form action="/users/{{user.id}}/delete" method="post">
+                  <button  type="submit" class="btn btn-sm btn-danger">Delete</button>
+
+                  </form>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
