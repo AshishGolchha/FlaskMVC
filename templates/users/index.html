@@ -14,15 +14,15 @@
         <tbody>
             {% for user in users %}
             <tr>
-                <th scope="row">1</th>
+                <td>{{loop.index}}</td>
                 <td>{{user.name}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.status}}</td>
                 <td>
                   <a class="btn btn-sm btn-primary" href="/users/{{user.id}}/edit">Edit</a>
                    <a class="btn btn-sm btn-primary" href="/users/{{user.id}}">View</a>
-                  <form action="/users/{{user.id}}/delete" method="post">
-                  <button  type="submit" class="btn btn-sm btn-danger">Delete</button>
+                  <form action="{{url_for('users.delete',id=user.id)}}" method="post">
+                  <button  type="submit" onclick="confirm_delete()" class="btn btn-sm btn-danger">Delete</button>
 
                   </form>
                 </td>

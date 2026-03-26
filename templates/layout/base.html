@@ -42,6 +42,12 @@
       </div>
     </nav>
     <div class="container-fluid" style="padding: 2rem">
+      {%for category,message in get_flashed_messages(with_categories=True)%}
+       <div class="alert alert-{{category}}" role="alert">
+            {{message}}
+        </div>
+      {%endfor%}
+     
         {% block content%}{% endblock %}
     </div>
 
@@ -50,5 +56,13 @@
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
+    <script>
+      function confirm_delete(this){
+
+        value = confirm("Are you sure you to delete this user");
+        console.log(value);
+        
+      }
+    </script>
   </body>
 </html>

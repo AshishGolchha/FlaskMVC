@@ -5,6 +5,7 @@ import Route
 from database import db
 
 app = Flask(__name__)
+app.secret_key = "1234567890"
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:Sonu%401045@localhost/flask"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
