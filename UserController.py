@@ -1,5 +1,5 @@
 from User import User
-from flask import jsonify, request, render_template, redirect, url_for
+from flask import jsonify, request, render_template, redirect,url_for,flash
 from database import db
 
 class UserController:
@@ -12,7 +12,11 @@ class UserController:
 
     def store():
         User().create(request.form)
+        flash(f'User has been created','success')
+
         return redirect(url_for('users.index'))
+
+
 
     def show(id):
         return render_template('users/show.html',user =User.query.get(id))
@@ -22,8 +26,11 @@ class UserController:
 
     def update(id):
         User.query.get(id).update(request.form)
+        flash(f'User has been updated with id {id}','success')
         return redirect(url_for('users.index'))
+
     
     def delete(id):
-        User.query.get(id).delete()
+        # User.query.get(id).delete()
+        flash(f'User has been deleted with id {id}','success')
         return redirect(url_for('users.index'))
